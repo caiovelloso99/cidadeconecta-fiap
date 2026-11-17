@@ -1,5 +1,10 @@
 # CidadeConecta — Global Solution FIAP
 
+🌐 **Site publicado:** https://caiovelloso99.github.io/cidadeconecta-fiap/
+📦 **Repositório:** https://github.com/caiovelloso99/cidadeconecta-fiap
+
+**Autor:** Caio Gurgel Velloso de Carvalho — RM 576274
+
 Portal que reúne três soluções para o cidadão:
 
 | Página | Arquivo | O que faz |
