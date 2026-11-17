@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Encontre serviços públicos: onde ir, quais documentos levar, custo e horários.">
+  <title>Serviços Públicos — CidadeConecta</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="servicos">
+  <main id="conteudo">
+    <div class="page-head">
+      <div class="container">
+        <h1>Serviços públicos</h1>
+        <p>Descubra onde ir, o que levar e quanto custa. Marque os documentos que você já tem e imprima seu checklist.</p>
+      </div>
+    </div>
+
+    <section class="block">
+      <div class="container">
+        <div class="card">
+          <label for="busca" style="margin-top:0">O que você precisa resolver?</label>
+          <input id="busca" type="search" placeholder="Ex.: RG, CNH, vacina, seguro-desemprego..." autocomplete="off">
+          <div class="chips" id="chips" role="group" aria-label="Filtrar por categoria"></div>
+          <div class="inline" style="justify-content:space-between">
+            <span id="resumo" class="muted small" aria-live="polite"></span>
+            <div class="inline">
+              <button class="btn small ghost" type="button" id="abrirTodos">Abrir todos</button>
+              <button class="btn small ghost" type="button" id="imprimir">🖨️ Imprimir</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="lista" style="margin-top:20px"></div>
+        <p class="muted small">⚠️ As informações são gerais e podem variar por cidade e estado. Confirme sempre no órgão responsável antes de ir.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/servicos-dados.js"></script>
+  <script src="js/servicos.js"></script>
+</body>
+</html>

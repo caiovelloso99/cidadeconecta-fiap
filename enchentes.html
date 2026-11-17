@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mapa de risco de enchentes por região, alertas e orientações para a população.">
+  <title>Risco de Enchentes — CidadeConecta</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="enchentes">
+  <main id="conteudo">
+    <div class="page-head">
+      <div class="container">
+        <h1>Risco de enchentes</h1>
+        <p>Simule a intensidade da chuva e veja como o risco muda em cada região. Os dados são fictícios, apenas para demonstração.</p>
+      </div>
+    </div>
+
+    <section class="block">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: start">
+
+          <!-- SIMULADOR + MAPA -->
+          <div>
+            <div class="card" style="margin-bottom:16px">
+              <h2>Simulador de chuva</h2>
+              <label for="chuva">Intensidade da chuva: <strong id="chuvaValor">25 mm/h</strong></label>
+              <input type="range" id="chuva" min="0" max="100" step="5" value="25" aria-describedby="chuvaDesc">
+              <div id="chuvaDesc" class="muted small">Até 5 mm/h: garoa · 5–25: chuva moderada · 25–50: chuva forte · acima de 50: temporal.</div>
+
+              <label for="solo">Condição do solo</label>
+              <select id="solo">
+                <option value="seco">Seco (sem chuva nos últimos dias)</option>
+                <option value="umido">Úmido</option>
+                <option value="encharcado">Encharcado (choveu muito nos últimos dias)</option>
+              </select>
+
+              <div class="btn-row">
+                <button class="btn small ghost" type="button" data-preset="5,seco">🌦️ Garoa</button>
+                <button class="btn small ghost" type="button" data-preset="30,umido">🌧️ Chuva forte</button>
+                <button class="btn small ghost" type="button" data-preset="70,encharcado">⛈️ Temporal</button>
+              </div>
+            </div>
+
+            <div class="map-wrap">
+              <svg viewBox="0 0 500 350" role="group" aria-label="Mapa esquemático da cidade por região. Selecione uma região para ver detalhes.">
+                <g id="zonas">
+                  <g class="zone-g" data-id="norte"  tabindex="0" role="button"><rect class="zone" x="15"  y="15"  width="300" height="105" rx="12"/><text class="zone-label" x="165" y="72">Zona Norte</text></g>
+                  <g class="zone-g" data-id="leste"  tabindex="0" role="button"><rect class="zone" x="325" y="15"  width="160" height="320" rx="12"/><text class="zone-label" x="435" y="180">Zona Leste</text></g>
+                  <g class="zone-g" data-id="oeste"  tabindex="0" role="button"><rect class="zone" x="15"  y="130" width="125" height="205" rx="12"/><text class="zone-label" x="77" y="235">Zona Oeste</text></g>
+                  <g class="zone-g" data-id="centro" tabindex="0" role="button"><rect class="zone" x="150" y="130" width="165" height="95"  rx="12"/><text class="zone-label" x="232" y="182">Centro</text></g>
+                  <g class="zone-g" data-id="sul"    tabindex="0" role="button"><rect class="zone" x="150" y="235" width="165" height="100" rx="12"/><text class="zone-label" x="232" y="290">Zona Sul</text></g>
+                </g>
+                <path d="M370 10 C 350 80, 395 150, 360 220 S 385 300, 365 345" fill="none" stroke="#4fb3ff" stroke-width="10" stroke-linecap="round" opacity=".9" pointer-events="none"/>
+                <text x="372" y="40" font-size="11" fill="#fff" pointer-events="none" style="font-weight:700">Rio</text>
+              </svg>
+              <div class="legend" aria-label="Legenda">
+                <span><i style="background:var(--ok)"></i>Baixo</span>
+                <span><i style="background:var(--warn)"></i>Moderado</span>
+                <span><i style="background:var(--high)"></i>Alto</span>
+                <span><i style="background:var(--crit)"></i>Crítico</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DETALHES + ALERTAS -->
+          <div>
+            <div class="card" id="detalheRegiao" aria-live="polite" style="margin-bottom:16px"></div>
+            <h2>Alertas ativos</h2>
+            <div id="alertas" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="container">
+        <h2>Orientações para a população</h2>
+        <div class="tabs" role="tablist" aria-label="Momento">
+          <button class="tab" role="tab" id="tab-antes" aria-selected="true" data-tab="antes">Antes da chuva</button>
+          <button class="tab" role="tab" id="tab-durante" aria-selected="false" data-tab="durante">Durante a enchente</button>
+          <button class="tab" role="tab" id="tab-depois" aria-selected="false" data-tab="depois">Depois da enchente</button>
+        </div>
+        <div class="card" id="painelOrient" role="tabpanel"></div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start">
+        <div class="card">
+          <h2>🎒 Kit de emergência</h2>
+          <p class="muted small">Marque o que você já tem separado. Seu progresso fica salvo neste navegador.</p>
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="barraKit"><div id="barraKitFill"></div></div>
+          <div id="kitTexto" class="small muted"></div>
+          <ul class="clean check" id="kit"></ul>
+          <button class="btn small ghost" type="button" id="kitLimpar">Limpar marcações</button>
+        </div>
+        <div class="card">
+          <h2>📞 Telefones de emergência</h2>
+          <div class="phones">
+            <div class="phone"><b>199</b>Defesa Civil</div>
+            <div class="phone"><b>193</b>Bombeiros</div>
+            <div class="phone"><b>192</b>SAMU</div>
+            <div class="phone"><b>190</b>Polícia</div>
+          </div>
+          <h3 style="margin-top:20px">Ocorrências ligadas a chuvas</h3>
+          <p class="muted small">Bueiros entupidos e alagamentos registrados na página de <a href="ocorrencias.html">Ocorrências</a> e ainda não resolvidos:</p>
+          <ul class="clean" id="relacionadas"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/enchentes.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Registre e acompanhe problemas da sua cidade: buracos, postes sem luz, calçadas quebradas e mais.">
+  <title>Ocorrências — CidadeConecta</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="ocorrencias">
+  <main id="conteudo">
+    <div class="page-head">
+      <div class="container">
+        <h1>Ocorrências da cidade</h1>
+        <p>Registre um problema, receba um número de protocolo e acompanhe o status até a resolução.</p>
+      </div>
+    </div>
+
+    <section class="block">
+      <div class="container two-col">
+
+        <!-- FORMULÁRIO -->
+        <aside>
+          <form id="form" class="card" novalidate aria-labelledby="tituloForm">
+            <h2 id="nova" tabindex="-1"><span id="tituloForm">Registrar problema</span></h2>
+
+            <label for="tipo">Tipo de problema</label>
+            <select id="tipo" required></select>
+            <div class="field-error" data-for="tipo"></div>
+
+            <label for="bairro">Bairro</label>
+            <select id="bairro" required></select>
+            <div class="field-error" data-for="bairro"></div>
+
+            <label for="endereco">Endereço / ponto de referência</label>
+            <input id="endereco" type="text" maxlength="100" placeholder="Ex.: Rua das Acácias, 120" required>
+            <div class="field-error" data-for="endereco"></div>
+
+            <label for="gravidade">Gravidade</label>
+            <select id="gravidade">
+              <option value="baixa">Baixa — incômodo</option>
+              <option value="media" selected>Média — atrapalha o dia a dia</option>
+              <option value="alta">Alta — risco à segurança</option>
+            </select>
+
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" maxlength="300" placeholder="Descreva o problema (mín. 10 caracteres)" required></textarea>
+            <div class="inline" style="justify-content:space-between">
+              <div class="field-error" data-for="descricao"></div>
+              <span class="muted small" id="contador">0/300</span>
+            </div>
+
+            <button class="btn" type="submit" style="width:100%;margin-top:10px">Enviar ocorrência</button>
+          </form>
+
+          <div class="card" style="margin-top:20px">
+            <h3>Consultar protocolo</h3>
+            <label for="buscaProto" style="margin-top:0">Número do protocolo</label>
+            <div class="inline" style="flex-wrap:nowrap">
+              <input id="buscaProto" type="text" placeholder="CC-2026-1001">
+              <button class="btn" id="btnProto" type="button">Buscar</button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- LISTA -->
+        <div>
+          <div class="card" style="margin-bottom:16px">
+            <div class="filters">
+              <div><label for="fBusca">Buscar</label><input id="fBusca" type="search" placeholder="Palavra, rua, bairro..."></div>
+              <div><label for="fStatus">Status</label><select id="fStatus"><option value="">Todos</option></select></div>
+              <div><label for="fTipo">Tipo</label><select id="fTipo"><option value="">Todos</option></select></div>
+              <div><label for="fOrdem">Ordenar por</label>
+                <select id="fOrdem">
+                  <option value="recentes">Mais recentes</option>
+                  <option value="apoios">Mais apoiadas</option>
+                  <option value="gravidade">Maior gravidade</option>
+                </select>
+              </div>
+            </div>
+            <div class="inline" style="justify-content:space-between">
+              <span id="resumo" class="muted small" aria-live="polite"></span>
+              <label class="inline" style="margin:0;font-weight:400">
+                <input type="checkbox" id="modoGestor"> Modo gestor (simular atualização de status)
+              </label>
+            </div>
+          </div>
+          <div id="lista"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="detalhe" aria-labelledby="detTitulo">
+    <div id="detConteudo"></div>
+    <div class="btn-row"><button class="btn" id="fechar" type="button">Fechar</button></div>
+  </dialog>
+
+  <script src="js/common.js"></script>
+  <script src="js/ocorrencias.js"></script>
+</body>
+</html>

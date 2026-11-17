@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sobre o projeto CidadeConecta, perguntas frequentes e formulário de contato.">
+  <title>Sobre e Contato — CidadeConecta</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="sobre">
+  <main id="conteudo">
+    <div class="page-head">
+      <div class="container">
+        <h1>Sobre o projeto</h1>
+        <p>Um portal único para aproximar o cidadão da gestão da cidade.</p>
+      </div>
+    </div>
+
+    <section class="block">
+      <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start">
+        <div>
+          <div class="card">
+            <h2>Por que o CidadeConecta?</h2>
+            <p>Muita gente não sabe a quem recorrer quando vê um buraco na rua, não recebe alerta a tempo de uma enchente ou perde um dia inteiro numa fila por falta de um documento. O CidadeConecta reúne em um só lugar três soluções:</p>
+            <ul>
+              <li><strong>Ocorrências:</strong> registro e acompanhamento de problemas urbanos.</li>
+              <li><strong>Enchentes:</strong> risco por região, alertas e orientações de segurança.</li>
+              <li><strong>Serviços públicos:</strong> onde ir, o que levar e quanto custa.</li>
+            </ul>
+            <p>Alinhado aos Objetivos de Desenvolvimento Sustentável da ONU: <strong>ODS 11</strong> (cidades e comunidades sustentáveis) e <strong>ODS 13</strong> (ação contra a mudança global do clima).</p>
+          </div>
+
+          <div class="card" style="margin-top:20px">
+            <h2>Tecnologias</h2>
+            <p>
+              <span class="tag">HTML5 semântico</span><span class="tag">CSS3 (Grid/Flexbox)</span>
+              <span class="tag">JavaScript (ES6+)</span><span class="tag">localStorage</span>
+              <span class="tag">SVG</span><span class="tag">Acessibilidade (ARIA)</span>
+            </p>
+            <p class="muted small">Todas as informações são salvas no seu navegador (localStorage). Não há servidor nem envio de dados.</p>
+          </div>
+
+          <div class="card" style="margin-top:20px">
+            <h2>Equipe</h2>
+            <ul class="clean">
+              <li>👤 Integrante 1 — RM 00000</li>
+              <li>👤 Integrante 2 — RM 00000</li>
+              <li>👤 Integrante 3 — RM 00000</li>
+            </ul>
+            <p class="muted small">Substitua pelos nomes e RMs do grupo.</p>
+          </div>
+        </div>
+
+        <div>
+          <form id="contato" class="card" novalidate>
+            <h2>Fale com a gente</h2>
+            <label for="nome">Nome</label>
+            <input id="nome" type="text" autocomplete="name" required>
+            <div class="field-error" data-for="nome"></div>
+
+            <label for="email">E-mail</label>
+            <input id="email" type="email" autocomplete="email" required>
+            <div class="field-error" data-for="email"></div>
+
+            <label for="assunto">Assunto</label>
+            <select id="assunto" required>
+              <option value="">Selecione...</option>
+              <option>Dúvida</option><option>Sugestão</option><option>Elogio</option><option>Problema no site</option>
+            </select>
+            <div class="field-error" data-for="assunto"></div>
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" maxlength="500" required></textarea>
+            <div class="field-error" data-for="mensagem"></div>
+
+            <button class="btn" type="submit" style="margin-top:10px">Enviar mensagem</button>
+          </form>
+
+          <div class="card" style="margin-top:20px">
+            <h3>Mensagens enviadas neste navegador</h3>
+            <ul class="clean" id="msgs"></ul>
+            <button class="btn small ghost" id="limpaMsgs" type="button">Apagar mensagens</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="container faq">
+        <h2>Perguntas frequentes</h2>
+        <details><summary>Os dados são reais?</summary><p>Não. Bairros, ocorrências e níveis de risco são fictícios e servem para demonstrar o funcionamento do site. As informações dos serviços públicos são gerais e devem ser confirmadas no órgão responsável.</p></details>
+        <details><summary>Como o nível de risco de enchente é calculado?</summary><p>Multiplicamos a vulnerabilidade da região (1 a 5) por um fator que combina a intensidade da chuva e a condição do solo. Quanto maior o resultado, maior o nível: baixo, moderado, alto ou crítico.</p></details>
+        <details><summary>Perdi meus dados. O que aconteceu?</summary><p>Tudo é salvo no localStorage do navegador. Limpar o histórico, usar aba anônima ou trocar de navegador apaga ou separa esses dados.</p></details>
+        <details><summary>O que é o "Modo gestor"?</summary><p>É uma simulação, na página de Ocorrências, que permite avançar o status de um problema (aberto → em análise → em andamento → resolvido), como faria a equipe da prefeitura.</p></details>
+        <details><summary>Em caso de emergência, devo usar o site?</summary><p>Não. Ligue 199 (Defesa Civil), 193 (Bombeiros), 192 (SAMU) ou 190 (Polícia).</p></details>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/sobre.js"></script>
+</body>
+</html>

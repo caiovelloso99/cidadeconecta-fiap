@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CidadeConecta: registre problemas urbanos, acompanhe riscos de enchentes e encontre serviços públicos.">
+  <title>CidadeConecta — Cidade mais próxima de você</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="index">
+  <div id="bannerAlerta" role="status"></div>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="container">
+        <h1>Sua cidade, mais perto de você.</h1>
+        <p>Registre problemas do seu bairro, acompanhe o andamento, saiba o risco de enchentes na sua região e descubra como tirar qualquer documento ou serviço público — tudo em um só lugar.</p>
+        <div class="btn-row">
+          <a class="btn accent" href="ocorrencias.html#nova">Registrar um problema</a>
+          <a class="btn ghost" style="color:#fff;border-color:#fff" href="enchentes.html">Ver risco de enchentes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="container">
+        <h2>A cidade em números</h2>
+        <div class="grid cols-4">
+          <div class="card stat"><div class="num" data-count id="nTotal">0</div><div class="lbl">Ocorrências registradas</div></div>
+          <div class="card stat"><div class="num" data-count id="nResolvidas">0</div><div class="lbl">Já resolvidas</div></div>
+          <div class="card stat"><div class="num" data-count id="nRegioes">0</div><div class="lbl">Regiões com risco alto ou crítico agora</div></div>
+          <div class="card stat"><div class="num" data-count id="nServicos">0</div><div class="lbl">Serviços públicos explicados</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="container">
+        <h2>O que você quer fazer hoje?</h2>
+        <div class="grid cols-3">
+          <article class="card feature">
+            <span class="emoji" aria-hidden="true">🛠️</span>
+            <h3>Reportar problemas</h3>
+            <p>Buraco na rua, poste apagado, calçada quebrada? Registre, receba um protocolo e acompanhe cada etapa até a solução.</p>
+            <a class="btn" href="ocorrencias.html">Ir para ocorrências</a>
+          </article>
+          <article class="card feature">
+            <span class="emoji" aria-hidden="true">🌧️</span>
+            <h3>Risco de enchentes</h3>
+            <p>Mapa por região com nível de risco conforme a chuva, alertas e orientações do que fazer antes, durante e depois.</p>
+            <a class="btn" href="enchentes.html">Ver o mapa de risco</a>
+          </article>
+          <article class="card feature">
+            <span class="emoji" aria-hidden="true">🏛️</span>
+            <h3>Serviços públicos</h3>
+            <p>Saiba onde ir, quais documentos levar, quanto custa e o horário de atendimento. Monte seu checklist e não volte duas vezes.</p>
+            <a class="btn" href="servicos.html">Buscar serviços</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="container">
+        <h2>Últimas ocorrências</h2>
+        <div id="ultimas" class="grid cols-3"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/servicos-dados.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
